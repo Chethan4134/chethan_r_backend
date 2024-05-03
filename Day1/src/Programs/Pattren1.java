@@ -1,4 +1,4 @@
-package Programs;
+package programs;
 
 public class Pattren1 {
 	public static void main(String[] args) {

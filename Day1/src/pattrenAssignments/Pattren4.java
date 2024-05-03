@@ -1,4 +1,4 @@
-package pattrenAssignments;
+package pattrenassignments;
 
 public class Pattren4 {
 		public static void main(String[] args) {
