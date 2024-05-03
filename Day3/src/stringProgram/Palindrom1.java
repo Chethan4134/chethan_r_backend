@@ -1,7 +1,8 @@
 package stringProgram;
+
 import java.util.Scanner;
 
-public class Palindrom {
+public class Palindrom1 {
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter the String name :");
@@ -17,5 +18,4 @@ public class Palindrom {
 			System.out.println(reversename+": The given name is not palindrom ");
 		}sc.close();
 	}
-	
 }
