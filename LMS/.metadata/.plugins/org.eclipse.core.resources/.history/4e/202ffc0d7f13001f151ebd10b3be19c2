@@ -1,0 +1,5 @@
+package com.excel.learning_management_system.enums;
+
+public enum Gender {
+
+}

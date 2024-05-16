@@ -1,0 +1,25 @@
+package com.excel.learning_management_system.entity;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "employee_technical_info")
+public class EmployeeTechnicalSkill {
+	
+	private String skillType;
+	private String skillRating;
+	private Double yearOfExperience;
+	
+	
+}
