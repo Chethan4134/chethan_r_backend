@@ -1,0 +1,33 @@
+package com.excel.learning_management_system.dto;
+
+import java.time.LocalDate;
+
+import com.excel.learning_management_system.enums.Designation;
+import com.excel.learning_management_system.enums.EmployeeStatus;
+import com.excel.learning_management_system.enums.Gender;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
+public class EmployeePrimaryInfoDto {
+	
+	private Integer id;
+	private String employeeId;
+	private String employeeName;
+	private LocalDate dateOfJoining;
+	private LocalDate dateOfBirth;
+	@Column(unique = true)
+	private String email;
+	private String bloodGroup;
+	@Enumerated(EnumType.STRING)
+	private Designation designation;
+	
+	@Enumerated(EnumType.STRING)
+	private Gender gender;
+	private String nationality;
+	
+
+	@Enumerated(EnumType.STRING)
+	private EmployeeStatus employeeStatus;
+}

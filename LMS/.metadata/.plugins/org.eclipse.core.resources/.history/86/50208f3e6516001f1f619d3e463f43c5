@@ -1,0 +1,7 @@
+package com.excel.learning_management_system.service.implementaion;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EmpoyeeEducationRepository extends JpaRepository<EmpoyeeEducationRepository, String> {
+
+}

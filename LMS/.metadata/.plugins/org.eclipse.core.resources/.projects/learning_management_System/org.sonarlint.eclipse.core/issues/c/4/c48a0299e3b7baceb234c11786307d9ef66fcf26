@@ -1,0 +1,12 @@
+
+n
+java:S1118":Add a private constructor to hide the implicit public one.b 439f07415fa0ec496c57be6bd7d8f29dh
+v	java:S125,"<This block of commented-out lines of code should be removed.8¾îîÖø1b b6111ba4a27ed70032ad1d35fe5e997ch
+µ
+java:S6204a"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.8ùŸßªù1b f31c9542f92d797a57d6f9bafca179cdh
+µ
+java:S6204q"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.8ºí€¥ù1b f31c9542f92d797a57d6f9bafca179cdh
+µ
+java:S6204{"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.8Žº™ªù1b f31c9542f92d797a57d6f9bafca179cdh
+¶
+java:S6204‘"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.8ÀÃ§¬ù1b f31c9542f92d797a57d6f9bafca179cdh

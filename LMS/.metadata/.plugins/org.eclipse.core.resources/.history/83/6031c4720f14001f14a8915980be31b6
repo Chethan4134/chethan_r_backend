@@ -1,0 +1,6 @@
+package com.excel.learning_management_system.service;
+
+public interface EmployeeInfoService {
+	
+	private void  savePrimaryInfo();
+}

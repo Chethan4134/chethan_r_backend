@@ -1,0 +1,13 @@
+package com.excel.learning_management_system.dto;
+
+public class EmployeeSecondaryInfoDto {
+	
+	private Integer empSecondaryId;
+	private String panNo;
+	private String aadharNo;
+	private String fatherName;
+	private String motherName;
+	private String spouseName;
+	private String passportNo;
+	private String maritalStatus;
+}

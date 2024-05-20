@@ -1,0 +1,8 @@
+package com.excel.learning_management_system.service;
+
+import com.excel.learning_management_system.dto.EmployeePrimaryInfoDto;
+
+public interface EmployeeInfoService {
+	
+	public Integer  savePrimaryInfo( EmployeePrimaryInfoDto dto);
+}

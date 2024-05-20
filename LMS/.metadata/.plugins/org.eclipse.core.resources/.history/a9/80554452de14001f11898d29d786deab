@@ -1,0 +1,6 @@
+package com.excel.learning_management_system.constant;
+
+public class EmployeeConstatnt {
+
+	private final static String ID_ALREADY_EXIST = "employee id already present";
+}

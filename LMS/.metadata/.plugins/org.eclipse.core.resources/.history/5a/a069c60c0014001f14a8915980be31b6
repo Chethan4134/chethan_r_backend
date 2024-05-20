@@ -1,0 +1,13 @@
+package com.excel.learning_management_system.dto;
+
+public class EmployeeBankInfoDto {
+	
+	private Integer bankId;
+	private Long accountNo;
+	private String bankName;
+	private String accountType;
+	private String ifscCode;
+	private String branch;
+	private String state;
+	
+}

@@ -1,0 +1,16 @@
+package com.excel.learning_management_system.exception;
+
+import org.springframework.web.bind.annotation.ControllerAdvice;
+
+@ControllerAdvice
+public class ExceptionHandller {
+	
+	@org.springframework.web.bind.annotation.ExceptionHandler
+	public  static void idNotfound() {
+		
+		
+	
+	}
+	
+	
+}

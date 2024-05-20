@@ -1,0 +1,49 @@
+package com.excel.learning_management_system.service.implementaion;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.excel.learning_management_system.dto.EmployeePrimaryInfoDto;
+import com.excel.learning_management_system.entity.EmployeePrimaryInfo;
+import com.excel.learning_management_system.repository.EmployeeRepository;
+import com.excel.learning_management_system.service.EmployeeInfoService;
+
+@Service
+
+public class EmployeeInfoServiceImpl implements EmployeeInfoService {
+	
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
+	@Override
+	public EmployeePrimaryInfoDto savePrimaryInfo(EmployeePrimaryInfoDto dto) {
+		EmployeePrimaryInfo employeePrimaryInfo = EmployeePrimaryInfo.builder()
+				
+				.employeeId(dto.getEmployeeId())
+				.employeeName(dto.getEmployeeName())
+				.dateOfJoining(dto.getDateOfJoining())
+				.dateOfBirth(dto.getDateOfBirth())
+				.email(dto.getEmail())
+				.bloodGroup(dto.getBloodGroup())
+				.designation(dto.getDesignation())
+				.gender(dto.getGender())
+				.nationality(dto.getNationality())
+				.employeeStatus(dto.getEmployeeStatus())
+				.build();
+		EmployeePrimaryInfo employeeSave = employeeRepository.save(employeePrimaryInfo);
+		return EmployeePrimaryInfoDto.builder()
+				.id(employeeSave.getId())
+				.employeeId(employeeSave.getEmployeeId())
+				.employeeName(employeeSave.getEmployeeName())
+				.dateOfJoining(employeeSave.getDateOfJoining())
+				.dateOfBirth(employeeSave.getDateOfBirth())
+				.email(employeeSave.getEmail())
+				.bloodGroup(employeeSave.getBloodGroup())
+				.designation(employeeSave.getDesignation())
+				.gender(employeeSave.getGender())
+				.nationality(employeeSave.getNationality())
+				.employeeStatus(employeeSave.getEmployeeStatus())
+				.build();
+	}
+
+}

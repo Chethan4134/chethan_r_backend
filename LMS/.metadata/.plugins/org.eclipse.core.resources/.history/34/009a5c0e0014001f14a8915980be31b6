@@ -1,0 +1,8 @@
+package com.excel.learning_management_system.dto;
+
+public class EmployeeContactInfoDto {
+
+	private Integer contactId;
+	private String contactType;
+	private Long contactNumber;
+}

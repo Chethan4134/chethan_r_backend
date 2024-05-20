@@ -1,0 +1,8 @@
+package com.excel.learning_management_system.responce;
+
+public class EmployeeResponce<T> {
+	
+	private T data;
+	private String message;
+	private String isErorr;
+}

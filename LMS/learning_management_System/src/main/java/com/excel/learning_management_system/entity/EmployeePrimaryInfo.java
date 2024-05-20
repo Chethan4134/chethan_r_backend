@@ -1,10 +1,9 @@
 package com.excel.learning_management_system.entity;
 
 
+
 import java.time.LocalDate;
 import java.util.List;
-
-import org.hibernate.engine.spi.Mapping;
 
 import com.excel.learning_management_system.enums.Designation;
 import com.excel.learning_management_system.enums.EmployeeStatus;
@@ -24,6 +23,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,12 +33,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "employee_primary_info")
 public class EmployeePrimaryInfo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(unique = true)
 	private String employeeId;
 	private String employeeName;
 	private LocalDate dateOfJoining;
@@ -56,6 +58,8 @@ public class EmployeePrimaryInfo {
 
 	@Enumerated(EnumType.STRING)
 	private EmployeeStatus employeeStatus;
+
+	
 	
 	@OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL , mappedBy = "employee")
 	private EmployeeSecondaryInfo secondary;
@@ -70,13 +74,14 @@ public class EmployeePrimaryInfo {
 	private List<EmployeeAddressInfo> employeeAddress;
 	
 	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "employee")
-	private List<EmployeeEducationInfo> employeeAdress;
-	
-	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "employee")
-	private List<EmployeeTechnicalSkill> employeeSkill;
+	private List<EmployeeEducationInfo> employeeEducation;
 	
 	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "employee")
 	private List<EmployeeContactInfo> contactInfo;
+
+	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "employee")
+	private List<EmployeeTechnicalSkill> employeeSkill;
+	
 	
 	
 	

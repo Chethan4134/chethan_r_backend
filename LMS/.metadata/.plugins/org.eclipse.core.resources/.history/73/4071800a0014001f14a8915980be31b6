@@ -1,0 +1,14 @@
+package com.excel.learning_management_system.dto;
+
+public class EmployeeAddressInfoDto {
+
+	private Integer addressId;
+	private String addressType;
+	private String doorNo;
+	private String street;
+	private String locality;
+	private String city;
+	private String state;
+	private Integer pinCode;
+	private String landMark;
+}

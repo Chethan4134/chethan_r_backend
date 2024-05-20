@@ -1,0 +1,14 @@
+package com.excel.learning_management_system.dto;
+
+import java.time.LocalDate;
+
+public class EmployeeExperienceInfoDto {
+
+	private Integer experienceId;
+	private String companyName;
+	private Double yearOfExperience;
+	private LocalDate dateOfJoining;
+	private LocalDate dateOfRelieving;
+	private String designation;
+	private String location;
+}

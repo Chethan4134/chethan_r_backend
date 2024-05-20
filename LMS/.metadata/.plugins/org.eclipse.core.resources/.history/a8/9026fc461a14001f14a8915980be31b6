@@ -1,0 +1,24 @@
+package com.excel.learning_management_system.util;
+
+import com.excel.learning_management_system.dto.EmployeePrimaryInfoDto;
+import com.excel.learning_management_system.entity.EmployeePrimaryInfo;
+
+public class EmployeeUtil {
+
+	private EmployeePrimaryInfo dtoToEntity(EmployeePrimaryInfoDto dto) {
+		
+		return EmployeePrimaryInfo.builder()
+				
+				.employeeId(dto.getEmployeeId())
+				.employeeName(dto.getEmployeeName())
+				.dateOfJoining(dto.getDateOfJoining())
+				.dateOfBirth(dto.getDateOfBirth())
+				.email(dto.getEmail())
+				.bloodGroup(dto.getBloodGroup())
+				.designation(dto.getDesignation())
+				.gender(dto.getGender())
+				.nationality(dto.getNationality())
+				.employeeStatus(dto.getEmployeeStatus())
+				.build();
+	}
+}

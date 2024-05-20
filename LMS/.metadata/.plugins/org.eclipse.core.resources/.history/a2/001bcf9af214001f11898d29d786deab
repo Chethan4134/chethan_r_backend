@@ -1,0 +1,61 @@
+package com.excel.learning_management_system.util;
+
+import com.excel.learning_management_system.dto.EmployeePrimaryInfoDto;
+import com.excel.learning_management_system.dto.EmployeeSecondaryInfoDto;
+import com.excel.learning_management_system.entity.EmployeePrimaryInfo;
+import com.excel.learning_management_system.entity.EmployeeSecondaryInfo;
+
+public class EmployeeUtil {
+
+	public static EmployeePrimaryInfo dtoToEntity(EmployeePrimaryInfoDto dto) {
+		
+		return EmployeePrimaryInfo.builder()
+				.id(dto.getId())
+				.employeeId(dto.getEmployeeId())
+				.employeeName(dto.getEmployeeName())
+				.dateOfJoining(dto.getDateOfJoining())
+				.dateOfBirth(dto.getDateOfBirth())
+				.email(dto.getEmail())
+				.bloodGroup(dto.getBloodGroup())
+				.designation(dto.getDesignation())
+				.gender(dto.getGender())
+				.nationality(dto.getNationality())
+				.employeeStatus(dto.getEmployeeStatus())
+				.build();
+	}
+	
+//	public static EmployeePrimaryInfoDto entityToDto(EmployeePrimaryInfo PrimaryInfo) {
+//		return EmployeePrimaryInfoDto.builder()
+//				.id(PrimaryInfo.getId())
+//				.employeeId(PrimaryInfo.getEmployeeId())
+//				.employeeName(PrimaryInfo.getEmployeeName())
+//				.dateOfJoining(PrimaryInfo.getDateOfJoining())
+//				.dateOfBirth(PrimaryInfo.getDateOfBirth())
+//				.email(PrimaryInfo.getEmail())
+//				.bloodGroup(PrimaryInfo.getBloodGroup())
+//				.designation(PrimaryInfo.getDesignation())
+//				.gender(PrimaryInfo.getGender())
+//				.nationality(PrimaryInfo.getNationality())
+//				.employeeStatus(PrimaryInfo.getEmployeeStatus())
+//				.build();
+//	}
+//	
+	
+	public static EmployeeSecondaryInfo dtoToEntity(EmployeeSecondaryInfo secondaryInfo) {
+		return EmployeeSecondaryInfoDto.builder()
+				.panNo(secondaryInfo.getPanNo())
+				.aadharNo(secondaryInfo.getAadharNo())
+				.passportNo(secondaryInfo.getPassportNo())
+				.fatherName(secondaryInfo.getFatherName())
+				.motherName(secondaryInfo.getMotherName())
+				.spouseName(secondaryInfo.getSpouseName())
+				.maritalStatus(secondaryInfo.getMaritalStatus())
+				.build();
+	}
+
+	public static EmployeeSecondaryInfo dtoToEntity(EmployeeSecondaryInfoDto dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

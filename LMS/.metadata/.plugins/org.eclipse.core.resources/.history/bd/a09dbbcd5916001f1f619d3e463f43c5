@@ -1,0 +1,15 @@
+package com.excel.learning_management_system.service;
+
+import com.excel.learning_management_system.dto.EmployeePrimaryInfoDto;
+import com.excel.learning_management_system.dto.EmployeeSecondaryInfoDto;
+import com.excel.learning_management_system.listdto.EmployeeEducationListDto;
+
+public interface EmployeeInfoService {
+	
+	public Integer  savePrimaryInfo( EmployeePrimaryInfoDto dto);
+
+	public String saveSecondaryInfo(EmployeeSecondaryInfoDto dto);
+
+	public String addEducationDetails(EmployeeEducationListDto dto);
+
+}

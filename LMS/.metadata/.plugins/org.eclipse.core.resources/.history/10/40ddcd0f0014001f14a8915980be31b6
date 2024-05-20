@@ -1,0 +1,15 @@
+package com.excel.learning_management_system.dto;
+
+import java.time.LocalDate;
+
+public class EmployeeEducationInfoDto {
+	
+	private Integer educationId;
+	private String educationType;
+	private LocalDate yearOfPassing;
+	private Double Percentage;
+	private String instituteName;
+	private String univercityName;
+	private String specialization;
+	private String state;
+}

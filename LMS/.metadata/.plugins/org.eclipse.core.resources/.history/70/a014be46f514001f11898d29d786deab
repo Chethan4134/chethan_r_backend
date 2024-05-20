@@ -1,0 +1,44 @@
+package com.excel.learning_management_system.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.excel.learning_management_system.dto.EmployeePrimaryInfoDto;
+import com.excel.learning_management_system.dto.EmployeeSecondaryInfoDto;
+import com.excel.learning_management_system.responce.EmployeeResponce;
+import com.excel.learning_management_system.service.EmployeeInfoService;
+
+
+@RestController
+public class EmployeeController {
+	
+	@Autowired
+	private EmployeeInfoService employeeInfoService;
+	
+	@PostMapping("/pinfo")
+	public ResponseEntity<EmployeeResponce<Integer>> postPrimaryInfo(@RequestBody EmployeePrimaryInfoDto dto) {
+		
+		Integer employeePrimaryInfoDto = employeeInfoService.savePrimaryInfo(dto);
+		return ResponseEntity.status(HttpStatus.ACCEPTED)
+				.body(EmployeeResponce.<Integer>builder()
+						.data(employeePrimaryInfoDto)
+						.message("Successfully Saved")
+
+				.build());
+	}
+	
+	@PostMapping(path="/sinfo")
+	public ResponseEntity<EmployeeResponce<String>> postSecondaryInfo(@RequestBody EmployeeSecondaryInfoDto dto){
+		
+		String employeeId = employeeInfoService.saveSecondaryInfo(dto);
+		
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(EmployeeResponce.<String>builder().data(employeeId).message("employee info Saved").build());
+		
+	}
+	
+}
+

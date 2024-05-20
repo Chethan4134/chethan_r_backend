@@ -1,0 +1,10 @@
+package com.excel.learning_management_system.exception;
+
+public class EmployeeException extends RuntimeException {
+
+	private EmployeeException(String message) {
+		
+		super(message);
+	}
+	
+}

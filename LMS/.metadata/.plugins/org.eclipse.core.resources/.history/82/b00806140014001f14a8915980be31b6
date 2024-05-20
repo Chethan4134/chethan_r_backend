@@ -1,0 +1,9 @@
+package com.excel.learning_management_system.dto;
+
+public class EmployeeTechnicalSkillDto {
+
+	private Integer technicalkId;
+	private String skillType;
+	private String skillRating;
+	private Double yearOfExperience;
+}

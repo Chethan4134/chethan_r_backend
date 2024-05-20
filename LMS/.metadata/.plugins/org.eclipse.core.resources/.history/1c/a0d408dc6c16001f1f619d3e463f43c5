@@ -1,0 +1,129 @@
+package com.excel.learning_management_system.service.implementaion;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.excel.learning_management_system.constant.EmployeeConstatnt;
+import com.excel.learning_management_system.dto.EmployeeBankInfoDto;
+import com.excel.learning_management_system.dto.EmployeePrimaryInfoDto;
+import com.excel.learning_management_system.dto.EmployeeSecondaryInfoDto;
+import com.excel.learning_management_system.entity.EmployeeBankInfo;
+import com.excel.learning_management_system.entity.EmployeeEducationInfo;
+import com.excel.learning_management_system.entity.EmployeePrimaryInfo;
+import com.excel.learning_management_system.entity.EmployeeSecondaryInfo;
+import com.excel.learning_management_system.exception.EmployeeException;
+import com.excel.learning_management_system.listdto.EmployeeEducationListDto;
+import com.excel.learning_management_system.repository.EmployeeEducationRepository;
+import com.excel.learning_management_system.repository.EmployeeRepository;
+import com.excel.learning_management_system.repository.EmpoyeeEducationRepository;
+import com.excel.learning_management_system.service.EmployeeInfoService;
+import com.excel.learning_management_system.util.EmployeeUtil;
+
+@Service
+
+public class EmployeeInfoServiceImpl implements EmployeeInfoService {
+
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private EmployeeEducationRepository educationRepository;
+
+	@Override
+	public Integer savePrimaryInfo(EmployeePrimaryInfoDto dto) {
+		if (!employeeRepository.findById(dto.getId()).isPresent()) {
+			EmployeePrimaryInfo employeePrimaryInfo = EmployeeUtil.dtoToEntity(dto);
+			EmployeePrimaryInfo employeeSave = employeeRepository.save(employeePrimaryInfo);
+			return employeeSave.getId();
+		} else {
+			throw new EmployeeException(EmployeeConstatnt.ID_ALREADY_EXIST);
+		}
+
+	}
+
+	@Override
+	public String saveSecondaryInfo(EmployeeSecondaryInfoDto dto) {
+		Optional<EmployeePrimaryInfo> optional = employeeRepository.findByEmployeeId(dto.getEmployeeId());
+		if (optional.isPresent()) {
+			EmployeePrimaryInfo employeePrimaryInfo = optional.get();
+			if (employeePrimaryInfo.getSecondary() == null) {
+				EmployeeSecondaryInfo employeeSecondaryInfo = EmployeeUtil.dtoToEntity(dto);
+
+				employeePrimaryInfo.setSecondary(employeeSecondaryInfo);
+				employeeSecondaryInfo.setEmployee(employeePrimaryInfo);
+
+				return employeeRepository.save(employeePrimaryInfo).getEmployeeId();
+			} else {
+				EmployeeSecondaryInfo secondaryInfo = employeePrimaryInfo.getSecondary();
+
+				secondaryInfo.setMaritalStatus(dto.getMaritalStatus());
+				return employeeRepository.save(employeePrimaryInfo).getEmployeeId();
+			}
+		} else {
+			throw new EmployeeException(EmployeeConstatnt.ID_IS_NOT_EXIST);
+
+		}
+
+	}
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	@Override
+	public String saveBankInfo(EmployeeBankInfoDto dto) {
+		Optional<EmployeePrimaryInfo> optional = employeeRepository.findByEmployeeId(dto.getEmployeeId());
+		if (optional.isPresent()) {
+			EmployeePrimaryInfo employeePrimaryInfo = optional.get();
+			if (employeePrimaryInfo.getBankInfo() == null) {
+				EmployeeBankInfo employeeBankInfo = EmployeeUtil.dtoToBankEntity(dto);
+
+				employeePrimaryInfo.setBankInfo(employeeBankInfo);
+				employeeBankInfo.setEmployee(employeePrimaryInfo);
+
+				return employeeRepository.save(employeePrimaryInfo).getEmployeeId();
+			} else {
+				EmployeeBankInfo employeeBankInfo = employeePrimaryInfo.getBankInfo();
+
+				employeeBankInfo.setAccountType(dto.getAccountType());
+				return employeeRepository.save(employeePrimaryInfo).getEmployeeId();
+			}
+		}
+		throw new EmployeeException(EmployeeConstatnt.ID_IS_NOT_EXIST);
+	}
+//----------------------------------------------------------------------------------------------------------------------
+
+	@Override
+	public String addEducationDetails(EmployeeEducationListDto dto) {
+
+		Optional<EmployeePrimaryInfo> optional = employeeRepository.findByEmployeeId(dto.getEmployeeId());
+		if (optional.isPresent()) {
+
+			EmployeePrimaryInfo employeePrimaryInfo = optional.get();
+			List<EmployeeEducationInfo> educationInfos = dto.getEmployeeList().stream()
+					.map(e -> EmployeeEducationInfo.builder().educationId(e.getEducationId())
+							.educationType(e.getEducationType()).yearOfPassing(e.getYearOfPassing())
+							.percentage(e.getPercentage()).univercityName(e.getUnivercityName())
+							.instituteName(e.getInstituteName()).specialization(e.getSpecialization())
+							.state(e.getState()).build())
+					.collect(Collectors.toList());
+			
+			if (employeePrimaryInfo.getEmployeeEducation() != null) {
+				employeePrimaryInfo.getEmployeeEducation().stream().forEach(educationRepository::delete);
+			}
+
+			educationInfos.stream().forEach(e -> e.setEmployee(employeePrimaryInfo));
+			employeePrimaryInfo.setEmployeeEducation((educationInfos));
+			employeeRepository.save(employeePrimaryInfo);
+
+			return employeePrimaryInfo.getEmployeeId();
+		}
+		throw new EmployeeException(EmployeeConstatnt.ID_IS_NOT_EXIST);
+	}
+//----------------------------------------------------------------------------------------------------------------------
+
+
+}
