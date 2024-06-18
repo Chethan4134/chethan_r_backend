@@ -1,41 +1,38 @@
 package com.excel.freelance_finder.entity;
 
-import java.sql.Date;
+import java.time.LocalDate;
+
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "message")
 public class Message {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private  int messageid;
-	private int sender_id;
-	private int reciver_id;
+	private Integer messageId;
 	private String content;
-	private Date send_at;
+	private LocalDate sentAt;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private UserTable user3;
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	private ClientUser clientUser;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private UserTable user4;
-	
-	
-	
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	private Freelancer freelancer;
 }
