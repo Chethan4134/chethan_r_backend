@@ -28,6 +28,7 @@ public class MainRunner {
 		st.setAge(23);
 		st.setMarks_card_id(card);
 		card.setStudent(st);
+		st.setMarks_card_id(card);
 
 		transaction.begin();
 		manager.persist(st);

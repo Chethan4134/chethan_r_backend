@@ -10,8 +10,11 @@ public class MainRunner {
 		ApplicationContext context = new ClassPathXmlApplicationContext("com/excel/collection/config.xml");
 		
 		Employee emp = (Employee) context.getBean("employee");
-		System.err.println(emp);
+		System.out.println(emp);
 		System.out.println(emp.getPhones());
+		System.out.println(emp.getSkills());
+		System.out.println(emp.getName());
+		System.out.println(emp.getNominees());
 		
 	}
 }

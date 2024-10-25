@@ -24,7 +24,7 @@ import lombok.Setter;
 public class MarksCard {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "mark_id")
 	private int id;
 	
